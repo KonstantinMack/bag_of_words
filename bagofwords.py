@@ -117,6 +117,13 @@ def prob_bayes(df, query, artist_list, k):
 
 # Main program:
 def main(pickle_list, artist_list, query, k=0.05):
+    """
+    Main Function:
+    - give it a list of pickle files with lyrics (they must be in the lyrics directory))
+    - give it a list of the artist names (must be in same order as pickle list)
+    - give it a QUERY (any string)
+    - k adjusts bayes probability calculation
+    """
     counter_all, counter_artists = make_counters(pickle_list)
     df = make_df(counter_all, counter_artists, artist_list)
     df_tfidf = tf_idf(df)
@@ -129,4 +136,4 @@ def main(pickle_list, artist_list, query, k=0.05):
         print(i[0], ": ", "{:04.2f} %".format(i[1]*100))
 
 
-main(["eminem.pkl", "madonna.pkl", "nas.pkl", "bep.pkl", "spears100.pkl", "justinbieber.pkl"], ["Eminem", "Madonna", "Nas", "BEP", "Britney", "Bieber"], "bitch")
+main(["eminem.pkl", "madonna.pkl", "nas.pkl", "bep.pkl", "spears100.pkl", "justinbieber.pkl"], ["Eminem", "Madonna", "Nas", "Black Eyed Peas", "Britney", "Bieber"], "bitch")
